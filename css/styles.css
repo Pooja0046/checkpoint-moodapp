@@ -15,18 +15,18 @@ body {
   height: 100vh;
 }
 
+/* SCREENS */
 .screen {
   display: none;
+  height: 100%;
 }
 
 .screen.active {
-  display: block;
+  display: flex;
+  flex-direction: column;
 }
 
-
-
-
-/* APP CONTAINER (PHONE) */
+/* APP CONTAINER */
 .app-container {
   width: 390px;
   height: 844px;
@@ -43,122 +43,229 @@ body {
     #644A9B
   );
 
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
 
-/* HEADER */
-.header {
+/* PIXEL STYLE */
+.pixel-box {
+  border: 3px solid #000;
+  box-shadow: 4px 4px 0 #000;
+}
+
+/* ---------------- START SCREEN ---------------- */
+
+.start-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.start-container img {
+  width: 300px;
+}
+
+.start-title {
+  font-size: 22px;
+}
+
+.start-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.start-btn,
+.exit-btn {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.start-btn {
+  background: #335F9F;
+    color: white;
+}
+
+.exit-btn {
+  background: #335F9F;
+  color: white;
+}
+
+/* ---------------- HOME SCREEN ---------------- */
+
+.home-header {
   text-align: center;
-  margin-bottom: 20px;
 }
 
 .soli {
-  width: 80px;
+  width: 200px;
   margin-bottom: 10px;
-  animation: float 3s ease-in-out infinite;
+  animation: float 3s infinite;
 }
 
 @keyframes float {
   0% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
+  50% { transform: translateY(-6px); }
   100% { transform: translateY(0); }
 }
-.message {
+
+.home-message {
   font-size: 14px;
-  color: #333;
 }
 
-/* MOOD SECTION */
-.mood-section h2 {
-  font-size: 18px;
-  margin-bottom: 10px;
+/* MOODS */
+.home-moods {
+  margin-top: 15px;
 }
 
-.moods {
+.home-mood-buttons {
   display: flex;
   justify-content: space-between;
+  margin-top: 10px;
 }
 
-.moods button {
+.home-mood-buttons button {
+  padding: 10px;
+  border-radius: 12px;
   border: none;
-  border-radius: 15px;
-  padding: 12px;
-  font-size: 20px;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255,255,255,0.7);
   cursor: pointer;
-  transition: 0.2s;
-}
-
-.moods button:hover {
-  background: #ffffff;
-}
-
-.moods button:active {
-  transform: scale(0.95);
 }
 
 /* TASKS */
-.tasks {
-  margin-top: 20px;
+.home-tasks {
+  margin-top: 15px;
 }
 
-.tasks h3 {
-  font-size: 16px;
-  margin-bottom: 10px;
-}
-
-.task-card {
-  background: rgba(255, 255, 255, 0.85);
-  padding: 12px;
-  border-radius: 15px;
-  margin-bottom: 10px;
-
+.home-task-card {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 10px;
+  margin-top: 10px;
+  background: white;
+  border-radius: 12px;
 }
 
-.task-card p {
-  font-size: 14px;
-}
-
-.task-card button {
+.home-task-card button {
   border: none;
-  border-radius: 10px;
-  padding: 6px 10px;
-  background: #f9c968;
-  cursor: pointer;
-  transition: 0.2s;
+  padding: 5px 10px;
+  border-radius: 8px;
+  background: #F9C968;
 }
 
-.task-card button:active {
-  transform: scale(0.9);
+/* PROGRESS */
+.progress {
+  margin-top: 15px;
+}
+
+.progress-bar {
+  height: 10px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 30%;
+  background: #F9C968;
 }
 
 /* AFFIRMATION */
-.affirmation {
-  background: #ffffff;
-  padding: 15px;
-  border-radius: 20px;
-  margin-top: 20px;
+.home-affirmation {
+  margin-top: 15px;
+  padding: 12px;
+  background: white;
+  border-radius: 15px;
   text-align: center;
 }
 
-.affirmation p {
-  font-size: 14px;
-  margin-bottom: 10px;
+.home-affirmation button {
+  margin-top: 8px;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: #DD7B8A;
+  color: white;
 }
 
-.affirmation button {
+/* ---------------- TASK SCREEN ---------------- */
+
+.tasks-header {
+  text-align: center;
+}
+
+.tasks-tabs {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 15px;
+}
+
+.tasks-tab {
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255,255,255,0.7);
+}
+
+.tasks-tab.active {
+  background: #F9C968;
+}
+
+.tasks-group {
+  display: none;
+  margin-top: 15px;
+}
+
+.tasks-group.active {
+  display: block;
+}
+
+.tasks-card {
+  background: white;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tasks-card button {
+  border: none;
+  padding: 5px 10px;
+  border-radius: 8px;
+  background: #F9C968;
+}
+
+/* ---------------- AFFIRMATIONS ---------------- */
+
+.affirmations-screen {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.affirmations-screen button {
+  margin-top: 10px;
+  padding: 8px 12px;
   border: none;
   border-radius: 10px;
-  padding: 6px 12px;
-  background: #dd7b8a;
+  background: #DD7B8A;
   color: white;
-  cursor: pointer;
 }
 
-/* NAV BAR */
+/* ---------------- REST ---------------- */
+
+.rest-screen {
+  text-align: center;
+  margin-top: 30px;
+}
+
+/* ---------------- NAV ---------------- */
+
 .nav {
   position: absolute;
   bottom: 15px;
@@ -169,7 +276,7 @@ body {
   display: flex;
   justify-content: space-around;
 
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255,255,255,0.7);
   padding: 10px;
   border-radius: 20px;
 }
@@ -177,15 +284,8 @@ body {
 .nav span {
   font-size: 20px;
   cursor: pointer;
-  transition: 0.2s;
 }
 
-.nav span:active {
-  transform: scale(0.85);
+.active-nav {
+  transform: scale(1.2);
 }
-
-
-
-
-
-
