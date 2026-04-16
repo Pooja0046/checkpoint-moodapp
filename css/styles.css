@@ -20,7 +20,6 @@ body {
   display: none;
   height: 100%;
 }
-
 .screen.active {
   display: flex;
   flex-direction: column;
@@ -46,13 +45,71 @@ body {
   box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
 
-/* PIXEL STYLE */
+/* PIXEL BOX */
 .pixel-box {
   border: 3px solid #000;
   box-shadow: 4px 4px 0 #000;
+  margin-top: 10px;
 }
 
-/* ---------------- START SCREEN ---------------- */
+/* ================= BUTTON SYSTEM ================= */
+
+/* BASE PIXEL BUTTON */
+button {
+  font-family: 'Pixelify Sans', monospace;
+  border: 3px solid #2b2b2b;
+  cursor: pointer;
+  margin-right: 4px;
+
+  padding: 10px 18px;
+
+  box-shadow:
+    4px 4px 0 #2b2b2b,
+    inset -2px -2px 0 rgba(0,0,0,0.2),
+    inset 2px 2px 0 rgba(255,255,255,0.3);
+
+  transition: all 0.15s ease;
+}
+
+/* HOVER */
+button:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    6px 6px 0 #2b2b2b,
+    inset -2px -2px 0 rgba(0,0,0,0.2),
+    inset 2px 2px 0 rgba(255,255,255,0.3);
+}
+
+/* CLICK */
+button:active {
+  transform: translateY(2px);
+  box-shadow:
+    2px 2px 0 #2b2b2b,
+    inset 2px 2px 0 rgba(0,0,0,0.25);
+}
+
+/* BUTTON VARIANTS */
+.btn-primary {
+  background: #F89461;
+  color: #2b2b2b;
+}
+
+.btn-secondary {
+  background: #6B91C8;
+  color: #2b2b2b;
+}
+
+.btn-accent {
+  background: #DD7B8A;
+  color: white;
+}
+
+.btn-soft {
+  background: #F9C968;
+  color: #2b2b2b;
+}
+
+/* ================= START SCREEN ================= */
 
 .start-container {
   height: 100%;
@@ -73,66 +130,10 @@ body {
 
 .start-buttons {
   display: flex;
-  gap: 10px;
+  gap: 12px;
 }
 
-.start-btn,
-.exit-btn {
-  padding: 10px 18px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-.start-btn {
-  background: #335F9F;
-    color: white;
-}
-
-.exit-btn {
-  background: #335F9F;
-  color: white;
-}
-
-.start-btn, .exit-btn {
-  padding: 10px 20px;
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
-  transition: 0.2s;
-  font-family: 'Pixelify Sans', monospace;
-}
-
-/* START BUTTON */
-.start-btn {
-  background: #F89461;
-}
-
-.start-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 3px 3px 0 #000;
-  background: #6B91C8;
-}
-
-/* EXIT BUTTON */
-.exit-btn {
-  background: #F89461;
-  color: white;
-}
-
-.exit-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 3px 3px 0 #000;
-  background: #6B91C8;
-}
-
-/* CLICK FEEDBACK */
-.start-btn:active,
-.exit-btn:active {
-  transform: scale(0.95);
-}
-
-/* ---------------- HOME SCREEN ---------------- */
+/* ================= HOME ================= */
 
 .home-header {
   text-align: center;
@@ -152,30 +153,21 @@ body {
 
 .home-message {
   font-size: 14px;
-}
-
-/* MOODS */
-.home-moods {
-  margin-top: 15px;
+  margin-bottom: 10px;
 }
 
 .home-mood-buttons {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .home-mood-buttons button {
   padding: 10px;
   border-radius: 12px;
-  border: none;
   background: rgba(255,255,255,0.7);
-  cursor: pointer;
-}
-
-/* TASKS */
-.home-tasks {
-  margin-top: 15px;
+  border: 3px solid #2b2b2b;
 }
 
 .home-task-card {
@@ -189,13 +181,9 @@ body {
 }
 
 .home-task-card button {
-  border: none;
   padding: 5px 10px;
-  border-radius: 8px;
-  background: #F9C968;
 }
 
-/* PROGRESS */
 .progress {
   margin-top: 15px;
 }
@@ -213,7 +201,6 @@ body {
   background: #F9C968;
 }
 
-/* AFFIRMATION */
 .home-affirmation {
   margin-top: 15px;
   padding: 12px;
@@ -224,35 +211,26 @@ body {
 
 .home-affirmation button {
   margin-top: 8px;
-  border: none;
-  padding: 6px 10px;
-  border-radius: 8px;
-  background: #DD7B8A;
-  color: white;
+
 }
 
-/* ---------------- TASK SCREEN ---------------- */
+/* ================= TASKS ================= */
 
 .tasks-title {
-margin-bottom: 30px;
-  
-}
-
-.tasks-header {
+  margin-bottom: 20px;
+  font-size: 25px;
   text-align: center;
-  
 }
 
 .tasks-tabs {
   display: flex;
   justify-content: space-around;
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
 .tasks-tab {
   padding: 8px 10px;
   border-radius: 10px;
-  border: none;
   background: rgba(255,255,255,0.7);
 }
 
@@ -260,11 +238,58 @@ margin-bottom: 30px;
   background: #F9C968;
 }
 
+/* TASK BUTTON CONTAINER */
+.tasks-card div {
+  display: flex;
+  gap: 10px;
+}
+
+/* SMALL PIXEL BUTTON (for tasks only) */
+.tasks-card button {
+  padding: 4px 8px;
+  font-size: 11px;
+
+  border: 2px solid #2b2b2b;
+
+  box-shadow:
+    2px 2px 0 #2b2b2b,
+    inset -1px -1px 0 rgba(0,0,0,0.2),
+    inset 1px 1px 0 rgba(255,255,255,0.3);
+
+  background: #F9C968;
+}
+
+/* HOVER */
+.tasks-card button:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    3px 3px 0 #2b2b2b,
+    inset -1px -1px 0 rgba(0,0,0,0.2),
+    inset 1px 1px 0 rgba(255,255,255,0.3);
+}
+
+/* CLICK */
+.tasks-card button:active {
+  transform: translateY(1px);
+  box-shadow:
+    1px 1px 0 #2b2b2b,
+    inset 1px 1px 0 rgba(0,0,0,0.25);
+}
+
+/* HEART BUTTON */
+.tasks-card button:first-child {
+  background: #dd7b8a00;
+}
+
+/* COMPLETE BUTTON */
+.tasks-card button:last-child {
+  background: #F9C968;
+}
+
 .tasks-group {
   display: none;
   margin-top: 15px;
 }
-
 .tasks-group.active {
   display: block;
 }
@@ -278,111 +303,98 @@ margin-bottom: 30px;
   justify-content: space-between;
 }
 
-.tasks-card button {
-  border: none;
-  padding: 5px 10px;
-  border-radius: 8px;
+.tasks-progress,
+.tasks-calendar,
+.tasks-favourites {
+  background: white;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+/* CALENDAR */
+.tasks-calendar {
+  background: white;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 12px;
+}
+
+/* GRID LAYOUT (THIS IS THE FIX) */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  margin: 10px 0;
+}
+
+/* DAYS */
+.day {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* keeps perfect squares */
+  background: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+/* COMPLETED DAY */
+.day.done {
   background: #F9C968;
 }
 
-.tasks-progress {
-  padding: 10px;
-  margin: 10px 0;
-  background: white;
+/* HOVER */
+.day:hover {
+  transform: scale(1.1);
+}
+
+/* DAY STATES */
+.day.selected {
+  outline: 2px solid #2b2b2b;
+}
+
+.day.low {
+  background: #F9C968; /* gentle */
+}
+
+.day.medium {
+  background: #F89461; /* decent */
+}
+
+.day.high {
+  background: #DD7B8A; /* great day */
+}
+
+/* FEEDBACK TEXT */
+.day-feedback {
+  text-align: center;
+  font-size: 12px;
+  margin-top: 8px;
 }
 
 .tasks-progress-bar {
   height: 10px;
   background: #eee;
   border-radius: 10px;
-  margin-top: 5px;
 }
 
 .tasks-progress-fill {
   height: 100%;
   width: 0%;
   background: #F9C968;
-  border-radius: 10px;
-  transition: 0.3s;
 }
 
-.tasks-feedback {
-  text-align: center;
-  font-size: 20px;
-  margin-bottom: 10px;
-}
+/* ================= AFFIRMATIONS ================= */
 
-
-.tasks-calendar {
-  background: white;
-  padding: 10px;
-  margin: 10px 0;
-}
-
-.calendar-grid {
-  display: flex;
-  justify-content: space-between;
-  margin: 10px 0;
-}
-
-.day {
-  width: 30px;
-  height: 30px;
-  background: #eee;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 12px;
-}
-
-.day.done {
-  background: #F9C968;
-}
-
-.day:hover {
-  transform: scale(1.1);
-}
-
-.day-feedback {
-  text-align: center;
-  font-size: 12px;
-}
-
-
-.tasks-favourites {
-  background: white;
-  padding: 10px;
-  margin-top: 10px;
-}
-
-.tasks-favourites .empty {
-  font-size: 12px;
-  opacity: 0.6;
-}
-
-.tasks-card div {
-  display: flex;
-  gap: 5px;
-}
-
-
-
-/* ---------------- AFFIRMATIONS ---------------- */
-
-.affirm-title {
-  text-align: center;
-  font-size: 18px;
-}
-
+.affirm-title,
 .affirm-sub {
   text-align: center;
-  font-size: 12px;
-  margin-bottom: 15px;
+  margin-top: 20px;
 }
 
-/* MAIN CARD */
 .affirm-card {
   background: white;
   padding: 15px;
@@ -391,7 +403,6 @@ margin-bottom: 30px;
   margin-bottom: 10px;
 }
 
-/* BUTTONS */
 .affirm-actions {
   display: flex;
   justify-content: center;
@@ -400,205 +411,45 @@ margin-bottom: 30px;
 }
 
 .affirm-actions button {
-  border: none;
-  border-radius: 10px;
   padding: 6px 12px;
-  background: #DD7B8A;
-  color: white;
-  cursor: pointer;
-  transition: 0.2s;
 }
 
-.affirm-actions button:hover {
-  transform: translateY(-2px);
-  box-shadow: 2px 2px 0 #000;
-}
-
-/* FEEDBACK TEXT */
-.affirm-feedback {
-  text-align: center;
-  font-size: 12px;
-  margin-bottom: 10px;
-}
-
-/* SAVED LIST */
-.affirm-saved {
-  background: white;
-  padding: 10px;
-}
-
-.affirm-saved .empty {
-  font-size: 12px;
-  opacity: 0.6;
-}
-
-.goals-section {
-  background: white;
-  padding: 10px;
-  margin-top: 10px;
-}
-
-/* INPUTS */
-.goals-section input {
-  width: 100%;
-  margin-top: 5px;
-  padding: 6px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-family: 'Pixelify Sans', monospace;
-}
-
-/* BUTTON */
-.goals-section button {
-  margin-top: 8px;
-  width: 100%;
-  padding: 6px;
-  border: none;
-  border-radius: 10px;
-  background: #F9C968;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.goals-section button:hover {
-  transform: translateY(-2px);
-  box-shadow: 2px 2px 0 #000;
-}
-
-/* LIST */
-#goalsList p {
-  font-size: 12px;
-  margin-top: 5px;
-}
-
-.reflection {
-  font-size: 12px;
-  text-align: center;
-  margin-top: 8px;
-  opacity: 0.7;
-}
-
+.affirm-saved,
+.goals-section,
 .gratitude-section {
   background: white;
   padding: 10px;
   margin-top: 10px;
 }
 
+.goals-section input,
 .gratitude-section input {
   width: 100%;
   margin-top: 5px;
   padding: 6px;
   border-radius: 8px;
   border: 1px solid #ccc;
-  font-family: 'Pixelify Sans', monospace;
 }
 
-.gratitude-section button {
-  margin-top: 8px;
-  width: 100%;
-  padding: 6px;
-  border: none;
-  border-radius: 10px;
-  background: #DD7B8A;
-  color: white;
-  cursor: pointer;
-  transition: 0.2s;
+/* ================= REST ================= */
+
+.rest-title {
+  margin-bottom: 20px;
+  font-size: 25px;
+  text-align: center;
+
 }
-
-.gratitude-section button:hover {
-  transform: translateY(-2px);
-  box-shadow: 2px 2px 0 #000;
-}
-
-#gratitudeList p {
-  font-size: 12px;
-  margin-top: 5px;
-}
-
-
-
-
-
-
-
-
-
-
-/* ---------------- REST ---------------- */
-
-/* REST SCREEN */
 
 .rest-screen {
   text-align: center;
   margin-top: 20px;
 }
 
-.rest-title {
-  font-size: 18px;
-  margin-bottom: 5px;
-}
-
-.rest-text {
-  font-size: 14px;
-  margin-bottom: 15px;
-}
-
-/* BREATHING CIRCLE */
-.breathing-circle {
-  width: 80px;
-  height: 80px;
-  margin: 15px auto;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.6);
-  transition: transform 4s ease-in-out;
-}
-
-/* BUTTON */
 .rest-btn {
   padding: 8px 12px;
-  border: none;
-  border-radius: 10px;
-  background: #F9C968;
-  cursor: pointer;
-  margin-bottom: 15px;
 }
 
-.rest-btn:hover {
-  background: #F89461;
-}
-
-/* TIMER */
-.rest-timer {
-  margin-top: 15px;
-  padding: 10px;
-  background: white;
-  border-radius: 10px;
-}
-
-#timer-display {
-  font-size: 18px;
-  margin: 5px 0;
-}
-
-/* SUGGESTIONS */
-.rest-suggestions {
-  margin-top: 15px;
-  font-size: 13px;
-}
-
-.rest-suggestions ul {
-  list-style: none;
-  padding: 0;
-}
-
-.soli-breathing {
-  width: 100px;
-  margin: 15px auto;
-  display: block;
-  transition: transform 4s ease-in-out;
-}
-
-
+.rest-timer,
 .rest-music {
   margin-top: 15px;
   padding: 10px;
@@ -606,13 +457,13 @@ margin-bottom: 30px;
   border-radius: 10px;
 }
 
-.rest-music select {
-  margin: 5px 0;
-  padding: 5px;
+.soli-breathing {
+  width: 100px;
+  margin: 15px auto;
+  display: block;
 }
 
-
-/* ---------------- NAV ---------------- */
+/* ================= NAV ================= */
 
 .nav {
   position: absolute;
@@ -620,10 +471,8 @@ margin-bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
-
   display: flex;
   justify-content: space-around;
-
   background: rgba(255,255,255,0.7);
   padding: 10px;
   border-radius: 20px;

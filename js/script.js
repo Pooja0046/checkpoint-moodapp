@@ -4,6 +4,7 @@ let xp = 0;
 let breathingInterval = null;
 
 
+
 window.onload = () => {
   const nav = document.querySelector('.nav');
   nav.style.display = "none"; // hide nav on load
@@ -170,13 +171,31 @@ function startBreathing() {
 
 
 
-function selectDay(element, message) {
-  document.querySelectorAll('.day').forEach(d => d.classList.remove('active-day'));
-  element.classList.add('active-day');
+function selectDay(dayElement) {
+  // remove previous selection highlight
+  document.querySelectorAll('.day').forEach(d => d.classList.remove('selected'));
+  dayElement.classList.add('selected');
 
-  document.getElementById("dayFeedback").innerText = message;
+  const rating = prompt("How helpful was today?\n1 = 😴 Low\n2 = 🙂 Okay\n3 = 🌟 Great");
+
+  const feedback = document.getElementById("day-feedback");
+
+  if (rating === "1") {
+    dayElement.classList.add("low");
+    feedback.innerText = "You showed up — that’s enough 💛";
+  } 
+  else if (rating === "2") {
+    dayElement.classList.add("medium");
+    feedback.innerText = "Nice effort today 🌿";
+  } 
+  else if (rating === "3") {
+    dayElement.classList.add("high");
+    feedback.innerText = "Amazing job today ✨";
+  } 
+  else {
+    feedback.innerText = "No rating selected 🙂";
+  }
 }
-
 
 
 
@@ -285,124 +304,72 @@ window.onload = () => {
 
 
 
-// BREATHING EXERCISE
-function startBreathing() {
-  const circle = document.getElementById("breathing-circle");
-  const text = document.getElementById("breathing-text");
+document.addEventListener("DOMContentLoaded", () => {
 
-  let inhale = true;
+  // GLOBALS
+  let breathingInterval;
+  let timerInterval;
+  let audio = new Audio();
+  let restCount = 0;
 
-  const interval = setInterval(() => {
-    if (inhale) {
-      circle.style.transform = "scale(1.5)";
-      text.innerText = "Breathe in...";
-    } else {
-      circle.style.transform = "scale(1)";
-      text.innerText = "Breathe out...";
-    }
+  window.startBreathingSession = function() {
+    const soli = document.getElementById("soli-breathing");
+    const text = document.getElementById("breathing-text");
+    const timerDisplay = document.getElementById("timer-display");
 
-    inhale = !inhale;
-  }, 4000);
+    if (!soli || !text || !timerDisplay) return; // prevents crashes
 
-  // stop after ~1 min
-  setTimeout(() => {
-    clearInterval(interval);
-    text.innerText = "Well done 💛";
-  }, 60000);
-}
+    let inhale = true;
+    let time = 60;
 
-// TIMER
-function startTimer() {
-  let time = 60;
-  const display = document.getElementById("timer-display");
+    clearInterval(breathingInterval);
+    clearInterval(timerInterval);
 
-  const countdown = setInterval(() => {
-    let mins = Math.floor(time / 60);
-    let secs = time % 60;
+    breathingInterval = setInterval(() => {
+      if (inhale) {
+        soli.src = "assets/images/solibreathingin.png";
+        soli.style.transform = "scale(0.9)";
+        text.innerText = "Breathe in...";
+      } else {
+        soli.src = "assets/images/solibreathingout.png";
+        soli.style.transform = "scale(1.2)";
+        text.innerText = "Breathe out...";
+      }
+      inhale = !inhale;
+    }, 4000);
 
-    display.innerText =
-      (mins < 10 ? "0" : "") + mins + ":" +
-      (secs < 10 ? "0" : "") + secs;
+    timerInterval = setInterval(() => {
+      let mins = Math.floor(time / 60);
+      let secs = time % 60;
 
-    time--;
+      timerDisplay.innerText =
+        (mins < 10 ? "0" : "") + mins + ":" +
+        (secs < 10 ? "0" : "") + secs;
 
-    if (time < 0) {
-      clearInterval(countdown);
-      display.innerText = "Done 💛";
-    }
-  }, 1000);
-}
+      time--;
 
+      if (time < 0) {
+        clearInterval(breathingInterval);
+        clearInterval(timerInterval);
 
-function startBreathing() {
-  const soli = document.getElementById("soli-breathing");
-  const text = document.getElementById("breathing-text");
+        text.innerText = "Soli is proud of you 💛";
 
-  let inhale = true;
+        restCount++;
+        document.getElementById("rest-count").innerText = restCount;
+      }
+    }, 1000);
+  };
 
-  const interval = setInterval(() => {
-    if (inhale) {
-      soli.src = "assets/images/soli-in.png";
-      soli.style.transform = "scale(0.9)";
-      text.innerText = "Breathe in...";
-    } else {
-      soli.src = "assets/images/soli-out.png";
-      soli.style.transform = "scale(1.2)";
-      text.innerText = "Breathe out...";
-    }
+  window.playMusic = function() {
+    const selected = document.getElementById("music-select").value;
+    audio.src = selected;
+    audio.loop = true;
+    audio.play().catch(() => {});
+  };
 
-    inhale = !inhale;
-  }, 4000);
+  window.stopMusic = function() {
+    audio.pause();
+    audio.currentTime = 0;
+  };
 
-  setTimeout(() => {
-    clearInterval(interval);
-    text.innerText = "Soli is proud of you 💛";
-  }, 60000);
-}
-
-let audio = new Audio();
-
-function playMusic() {
-  const selected = document.getElementById("music-select").value;
-  audio.src = selected;
-  audio.loop = true;
-  audio.play();
-}
-
-function stopMusic() {
-  audio.pause();
-}
-
-
-let restCount = 0;
-
-function startBreathing() {
-  const soli = document.getElementById("soli-breathing");
-  const text = document.getElementById("breathing-text");
-
-  let inhale = true;
-
-  const interval = setInterval(() => {
-    if (inhale) {
-      soli.src = "assets/images/solibreathingin.png";
-      soli.style.transform = "scale(0.9)";
-      text.innerText = "Breathe in...";
-    } else {
-      soli.src = "assets/images/solibreathingout.png";
-      soli.style.transform = "scale(1.2)";
-      text.innerText = "Breathe out...";
-    }
-
-    inhale = !inhale;
-  }, 4000);
-
-  setTimeout(() => {
-    clearInterval(interval);
-    text.innerText = "Soli is proud of you 💛";
-
-    // increment counter
-    restCount++;
-    document.getElementById("rest-count").innerText = restCount;
-
-  }, 60000);
-}
+});

@@ -132,7 +132,7 @@
   </div>
 
   <div class="tasks-card pixel-box">
-    <p>🎵 Listen to a calming song</p>
+    <p>🎵 Listen to a song</p>
     <div>
       <button onclick="favouriteTask(this)">❤️</button>
       <button onclick="completeTasksItem(this)">Complete</button>
@@ -199,7 +199,7 @@
   </div>
 
   <div class="tasks-card pixel-box">
-    <p>🧠 Work on a task or assignment</p>
+    <p>🧠 Work on assignment</p>
     <div>
       <button onclick="favouriteTask(this)">❤️</button>
       <button onclick="completeTasksItem(this)">Complete</button>
@@ -224,21 +224,20 @@
   </div>
 </div>
 
-
-    <div class="tasks-calendar pixel-box">
+<div class="tasks-calendar pixel-box">
   <p>🌸 Your Week</p>
 
   <div class="calendar-grid">
-    <div onclick="selectDay(this, 'Good day ☀️')" class="day done">M</div>
-    <div onclick="selectDay(this, 'Okay day 🌿')" class="day done">T</div>
-    <div onclick="selectDay(this, 'Rest day 💤')" class="day">W</div>
-    <div onclick="selectDay(this, 'Productive 🌟')" class="day done">T</div>
-    <div onclick="selectDay(this, 'Low energy 🌧️')" class="day">F</div>
-    <div onclick="selectDay(this, 'Great day 💛')" class="day done">S</div>
-    <div onclick="selectDay(this, 'Relaxed ☁️')" class="day">S</div>
+    <div class="day" onclick="selectDay(this)">M</div>
+    <div class="day" onclick="selectDay(this)">T</div>
+    <div class="day" onclick="selectDay(this)">W</div>
+    <div class="day" onclick="selectDay(this)">T</div>
+    <div class="day" onclick="selectDay(this)">F</div>
+    <div class="day" onclick="selectDay(this)">S</div>
+    <div class="day" onclick="selectDay(this)">S</div>
   </div>
 
-  <p id="dayFeedback" class="day-feedback">Tap a day ✨</p>
+  <p class="day-feedback" id="day-feedback">Tap a day ✨</p>
 </div>
 
     
@@ -318,21 +317,18 @@
   <h2 class="rest-title">💤 Rest Mode</h2>
   <p id="breathing-text" class="rest-text">Take a breath ☀️</p>
 
-  <!-- BREATHING CIRCLE -->
-<!-- SOLI BREATHING -->
-<img src="assets/images/solibreathingin.png" 
-     id="soli-breathing" 
-     class="soli-breathing">
+  <!-- SOLI BREATHING -->
+  <img src="assets/images/solibreathingin.png" 
+       id="soli-breathing" 
+       class="soli-breathing">
 
-     
+  <!-- ONE BUTTON (controls EVERYTHING now) -->
+  <button class="rest-btn" onclick="startBreathingSession()">Start Breathing</button>
 
-  <button class="rest-btn" onclick="startBreathing()">Start Breathing</button>
-
-  <!-- TIMER -->
+  <!-- TIMER DISPLAY ONLY -->
   <div class="rest-timer pixel-box">
-    <p>⏱️ Rest Timer</p>
-    <p id="timer-display">00:00</p>
-    <button onclick="startTimer()">Start 1 min</button>
+    <p>⏱️ Breathing Timer</p>
+    <p id="timer-display">01:00</p>
   </div>
 
   <!-- REST SUGGESTIONS -->
@@ -346,26 +342,26 @@
   </div>
 
   <!-- MUSIC PLAYER -->
-<div class="rest-music pixel-box">
-  <p>🎧 Chill Sounds</p>
+  <div class="rest-music pixel-box">
+    <p>🎧 Chill Sounds</p>
 
-  <select id="music-select">
-    <option src="assets/audio/rain.mp3">🌧️ Rain</option>
-    <option src="assets/audio/waves.mp3">🌊 Waves</option>
-    <option src="assets/audio/lo-fi.mp3">🎶 Lo-fi</option>
-  </select>
+    <select id="music-select">
+      <option value="assets/audio/rain.mp3">🌧️ Rain</option>
+      <option value="assets/audio/waves.mp3">🌊 Waves</option>
+      <option value="assets/audio/lo-fi.mp3">🎶 Lo-fi</option>
+    </select>
 
-  <button onclick="playMusic()">Play</button>
-  <button onclick="stopMusic()">Stop</button>
+    <button onclick="playMusic()">Play</button>
+    <button onclick="stopMusic()">Stop</button>
+  </div>
+
+  <!-- SESSION TRACKER -->
+  <div class="rest-tracker pixel-box">
+    <p>🌙 Sessions Completed</p>
+    <p id="rest-count">0</p>
+  </div>
+
 </div>
-
-<div class="rest-tracker pixel-box">
-  <p>🌙 Sessions Completed</p>
-  <p id="rest-count">0</p>
-</div>
-
-</div>
-
 
 
 
