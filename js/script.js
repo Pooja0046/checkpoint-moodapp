@@ -99,8 +99,20 @@ const affirmations = [
 
 function newAffirmation() {
   const text = affirmations[Math.floor(Math.random() * affirmations.length)];
-  document.getElementById("affirmation-display").innerText = text;
 
+  // HOME SCREEN
+  const homeText = document.getElementById("affirmation-text");
+  if (homeText) {
+    homeText.innerText = text;
+  }
+
+  // AFFIRMATIONS SCREEN (if present)
+  const affirmScreenText = document.getElementById("affirmation-display");
+  if (affirmScreenText) {
+    affirmScreenText.innerText = text;
+  }
+
+  // OPTIONAL FEEDBACK
   const feedback = document.getElementById("affirmation-feedback");
   if (feedback) {
     feedback.innerText = "New affirmation ✨";
@@ -329,14 +341,17 @@ document.addEventListener("DOMContentLoaded", () => {
       if (inhale) {
         soli.src = "assets/images/solibreathingin.png";
         soli.style.transform = "scale(0.9)";
-        text.innerText = "Breathe in...";
+        text.innerText = "Breathe out...";
       } else {
         soli.src = "assets/images/solibreathingout.png";
         soli.style.transform = "scale(1.2)";
-        text.innerText = "Breathe out...";
+        text.innerText = "Breathe in...";
       }
       inhale = !inhale;
     }, 4000);
+
+    soli.style.transform = "scale(1)";
+soli.src = "assets/images/solibreathingin.png";
 
     timerInterval = setInterval(() => {
       let mins = Math.floor(time / 60);

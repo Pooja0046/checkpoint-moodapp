@@ -34,22 +34,21 @@ body {
   position: relative;
   padding: 20px;
 
-  background: linear-gradient(
-    to bottom,
-    #F9C968,
-    #F89461,
-    #DD7B8A,
-    #644A9B
-  );
+  /* 🌅 PIXEL SKY BACKGROUND */
+  background: url("../assets/images/pixel-sky.png");
+  background-size: cover;       /* fills container nicely */
+  background-position: center;  /* keeps it centred */
+  background-repeat: no-repeat;
 
   box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
 
 /* PIXEL BOX */
 .pixel-box {
+  background-color: #eee;
   border: 3px solid #000;
   box-shadow: 4px 4px 0 #000;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 /* ================= BUTTON SYSTEM ================= */
@@ -109,6 +108,26 @@ button:active {
   color: #2b2b2b;
 }
 
+/* SMALL BUTTON (fixes your layout issue) */
+.btn-small {
+  padding: 6px 10px;
+  font-size: 12px;
+}
+
+/* ICON BUTTON (❤️) */
+.btn-icon {
+  padding: 6px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* PREVENT TASK BUTTONS BREAKING LAYOUT */
+.tasks-card button {
+  flex-shrink: 0;
+}
 /* ================= START SCREEN ================= */
 
 .start-container {
@@ -217,6 +236,7 @@ button:active {
 /* ================= TASKS ================= */
 
 .tasks-title {
+  margin-top: 10px;
   margin-bottom: 20px;
   font-size: 25px;
   text-align: center;
@@ -225,7 +245,7 @@ button:active {
 .tasks-tabs {
   display: flex;
   justify-content: space-around;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 .tasks-tab {
@@ -298,6 +318,7 @@ button:active {
   background: white;
   padding: 10px;
   margin-top: 10px;
+  margin-bottom: 20px;
   border-radius: 12px;
   display: flex;
   justify-content: space-between;
@@ -419,7 +440,7 @@ button:active {
 .gratitude-section {
   background: white;
   padding: 10px;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .goals-section input,
@@ -429,7 +450,11 @@ button:active {
   padding: 6px;
   border-radius: 8px;
   border: 1px solid #ccc;
+
+    margin-bottom: 10px;
 }
+
+
 
 /* ================= REST ================= */
 
@@ -461,6 +486,41 @@ button:active {
   width: 100px;
   margin: 15px auto;
   display: block;
+
+  transition: transform 4s ease-in-out;
+}
+
+.rest-suggestions {
+  margin-top: 15px;
+  text-align: left;
+}
+
+.rest-suggestions ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.rest-suggestions li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 6px 0;
+}
+
+.rest-music {
+  text-align: center;
+}
+
+.rest-music select {
+  display: block;
+  margin: 10px auto;
+  padding: 6px;
+}
+
+.music-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 
 /* ================= NAV ================= */

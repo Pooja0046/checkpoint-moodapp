@@ -1,9 +1,9 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Checkpoint</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&display=swap" rel="stylesheet">
@@ -15,215 +15,71 @@
 <div class="app-container">
 
   <!-- 🎮 START SCREEN -->
+
   <div class="screen active" id="start">
     <div class="start-container">
       <img src="assets/images/mascot.png" class="soli-start">
       <h1 class="start-title">Checkpoint</h1>
       <p class="start-subtitle">A gentle journey ☀️</p>
 
-      <div class="start-buttons">
-        <button class="start-btn" onclick="showScreen('home')">Start</button>
-    <button class="exit-btn" onclick="exitApp()">Exit</button>
-      </div>
-    </div>
+      
+  <div class="start-buttons">
+    <button class="start-btn btn-primary" onclick="showScreen('home')">Start</button>
+    <button class="exit-btn btn-secondary" onclick="exitApp()">Exit</button>
+  </div>
+</div>
+
+
   </div>
 
   <!-- 🌞 HOME -->
+
   <div class="screen" id="home">
 
-    <div class="home-header">
-      <img src="assets/images/mascot.png" class="soli" id="soli">
-      <h1 class="home-title">Checkpoint</h1>
-      <p class="home-message" id="soli-message">Let’s take it slow today ☀️</p>
-    </div>
 
-    <!-- MOOD -->
-    <div class="home-mood">
-      <h2>How are you feeling?</h2>
-      <div class="home-mood-buttons">
-        <button onclick="selectMood(this)">😊</button>
-        <button onclick="selectMood(this)">😐</button>
-        <button onclick="selectMood(this)">😴</button>
-        <button onclick="selectMood(this)">😣</button>
-      </div>
-    </div>
+<div class="home-header">
+  <img src="assets/images/mascot.png" class="soli" id="soli">
+  <h1 class="home-title">Checkpoint</h1>
+  <p class="home-message" id="soli-message">Let’s take it slow today ☀️</p>
+</div>
 
-    <!-- TASKS -->
-    <div class="home-tasks">
-      <h3>Current tasks...</h3>
-
-      <div class="home-task-card pixel-box">
-        <p>💧 Drink water</p>
-        <button onclick="completeTask(this)">Complete</button>
-      </div>
-
-      <div class="home-task-card pixel-box">
-        <p>🌿 Step outside</p>
-        <button onclick="completeTask(this)">Complete</button>
-      </div>
-    </div>
-
-    <!-- PROGRESS -->
-    <div class="progress">
-      <p>Daily Progress</p>
-      <div class="progress-bar">
-        <div class="progress-fill" id="progress-fill"></div>
-      </div>
-      <p id="xp-text">XP: 0 / 100</p>
-    </div>
-
-    <!-- AFFIRMATION -->
-    <div class="home-affirmation pixel-box">
-      <p id="affirmation-text">"You are allowed to go at your own pace"</p>
-      <button onclick="newAffirmation()">New</button>
-    </div>
-
-  </div>
-
-  <!-- 🌿 TASKS -->
-  <div class="screen" id="tasks">
-
-
-
-    <h2 class="tasks-title">🌿 Your Tasks</h2>
-
-        <p class="tasks-feedback" id="tasksFeedback">Pick something small 💛</p>
-
-    <div class="tasks-progress pixel-box">
-  <p>Progress 🌱</p>
-  <div class="tasks-progress-bar">
-    <div class="tasks-progress-fill" id="tasksProgress"></div>
+<!-- MOOD -->
+<div class="home-mood">
+  <h2>How are you feeling?</h2>
+  <div class="home-mood-buttons">
+    <button class="btn-soft" onclick="selectMood(this)">😊</button>
+    <button class="btn-soft" onclick="selectMood(this)">😐</button>
+    <button class="btn-soft" onclick="selectMood(this)">😴</button>
+    <button class="btn-soft" onclick="selectMood(this)">😣</button>
   </div>
 </div>
 
+<!-- TASKS -->
+<div class="home-tasks">
+  <h3>Current tasks...</h3>
 
-
-    <div class="tasks-tabs">
-      <button class="tasks-tab active" onclick="switchTasksTab(this, 'lowTasks')">🌱 Low</button>
-      <button class="tasks-tab" onclick="switchTasksTab(this, 'mediumTasks')">🌿 Medium</button>
-      <button class="tasks-tab" onclick="switchTasksTab(this, 'highTasks')">🌳 High</button>
-    </div>
-
-
-    <div class="tasks-group active" id="lowTasks">
-
-  <div class="tasks-card pixel-box">
-    <p>💧 Drink some water</p>
-    <div>
-      <button onclick="favouriteTask(this)">❤️</button>
-      <button onclick="completeTasksItem(this)">Complete</button>
-    </div>
+  <div class="home-task-card pixel-box">
+    <p>💧 Drink water</p>
+    <button class="btn-soft btn-small" onclick="completeTask(this)">Complete</button>
   </div>
 
-  <div class="tasks-card pixel-box">
-    <p>🛏️ Rest for a moment</p>
-    <div>
-      <button onclick="favouriteTask(this)">❤️</button>
-      <button onclick="completeTasksItem(this)">Complete</button>
-    </div>
-  </div>
-
-  <div class="tasks-card pixel-box">
-    <p>🌬️ Take 5 deep breaths</p>
-    <div>
-      <button onclick="favouriteTask(this)">❤️</button>
-      <button onclick="completeTasksItem(this)">Complete</button>
-    </div>
-  </div>
-
-  <div class="tasks-card pixel-box">
-    <p>🎵 Listen to a song</p>
-    <div>
-      <button onclick="favouriteTask(this)">❤️</button>
-      <button onclick="completeTasksItem(this)">Complete</button>
-    </div>
-  </div>
-
-</div>
-
-
-
-<div class="tasks-group" id="mediumTasks">
-
-  <div class="tasks-card pixel-box">
-    <p>🚶 Go for a short walk</p>
-    <div>
-      <button onclick="favouriteTask(this)">❤️</button>
-      <button onclick="completeTasksItem(this)">Complete</button>
-    </div>
-  </div>
-
-  <div class="tasks-card pixel-box">
-    <p>🧹 Tidy a small space</p>
-    <div>
-      <button onclick="favouriteTask(this)">❤️</button>
-      <button onclick="completeTasksItem(this)">Complete</button>
-    </div>
-  </div>
-
-  <div class="tasks-card pixel-box">
-    <p>📖 Read for 10 minutes</p>
-    <div>
-      <button onclick="favouriteTask(this)">❤️</button>
-      <button onclick="completeTasksItem(this)">Complete</button>
-    </div>
-  </div>
-
-  <div class="tasks-card pixel-box">
-    <p>📱 Message a friend</p>
-    <div>
-      <button onclick="favouriteTask(this)">❤️</button>
-      <button onclick="completeTasksItem(this)">Complete</button>
-    </div>
-  </div>
-
-</div>
-
-
-<div class="tasks-group" id="highTasks">
-
-  <div class="tasks-card pixel-box">
-    <p>🏃 Exercise</p>
-    <div>
-      <button onclick="favouriteTask(this)">❤️</button>
-      <button onclick="completeTasksItem(this)">Complete</button>
-    </div>
-  </div>
-
-  <div class="tasks-card pixel-box">
-    <p>📝 Plan your day</p>
-    <div>
-      <button onclick="favouriteTask(this)">❤️</button>
-      <button onclick="completeTasksItem(this)">Complete</button>
-    </div>
-  </div>
-
-  <div class="tasks-card pixel-box">
-    <p>🧠 Work on assignment</p>
-    <div>
-      <button onclick="favouriteTask(this)">❤️</button>
-      <button onclick="completeTasksItem(this)">Complete</button>
-    </div>
-  </div>
-
-  <div class="tasks-card pixel-box">
-    <p>🍳 Cook a proper meal</p>
-    <div>
-      <button onclick="favouriteTask(this)">❤️</button>
-      <button onclick="completeTasksItem(this)">Complete</button>
-    </div>
-  </div>
-
-</div>
-
-
-<div class="tasks-favourites pixel-box">
-  <p>💛 Your Favourites</p>
-  <div id="favouritesList">
-    <p class="empty">No favourites yet</p>
+  <div class="home-task-card pixel-box">
+    <p>🌿 Step outside</p>
+    <button class="btn-soft btn-small" onclick="completeTask(this)">Complete</button>
   </div>
 </div>
 
+<!-- PROGRESS -->
+<div class="progress">
+  <p>Daily Progress</p>
+  <div class="progress-bar">
+    <div class="progress-fill" id="progress-fill"></div>
+  </div>
+  <p id="xp-text">XP: 0 / 100</p>
+</div>
+
+
+<!-- CALENDAR -->
 <div class="tasks-calendar pixel-box">
   <p>🌸 Your Week</p>
 
@@ -240,132 +96,253 @@
   <p class="day-feedback" id="day-feedback">Tap a day ✨</p>
 </div>
 
-    
+
+
 
   </div>
 
-<!-- ✨ AFFIRMATIONS -->
-<div class="screen" id="affirmations">
+  <!-- 🌿 TASKS -->
 
-  <h2 class="affirm-title">✨ Affirmations</h2>
-  <p class="affirm-sub">A little reminder for you 💛</p>
+  <div class="screen" id="tasks">
 
-  <!-- MAIN CARD -->
-  <div class="affirm-card pixel-box">
-    <p id="affirmation-display">You are allowed to go at your own pace ☀️</p>
+
+<h2 class="tasks-title">🌿 Tasks</h2>
+<p class="tasks-feedback" id="tasksFeedback">Pick something small 💛</p>
+
+<div class="tasks-progress pixel-box">
+  <p>Progress 🌱</p>
+  <div class="tasks-progress-bar">
+    <div class="tasks-progress-fill" id="tasksProgress"></div>
   </div>
+</div>
 
-  <!-- ACTION BUTTONS -->
-  <div class="affirm-actions">
-    <button onclick="newAffirmation()">🔁 New</button>
-    <button onclick="saveAffirmation()">💛 Save</button>
-  </div>
+<div class="tasks-tabs">
+  <button class="tasks-tab btn-soft active" onclick="switchTasksTab(this, 'lowTasks')">🌱 Low</button>
+  <button class="tasks-tab btn-soft" onclick="switchTasksTab(this, 'mediumTasks')">🌿 Medium</button>
+  <button class="tasks-tab btn-soft" onclick="switchTasksTab(this, 'highTasks')">🌳 High</button>
+</div>
 
-  <p class="reflection">💭 What does this mean to you today?</p>
+<!-- LOW -->
+<div class="tasks-group active" id="lowTasks">
 
-  <!-- FEEDBACK -->
-  <p id="affirmation-feedback" class="affirm-feedback"></p>
-
-  <!-- SAVED LIST -->
-  <div class="affirm-saved pixel-box">
-    <p>💛 Saved Affirmations</p>
-    <div id="savedList">
-      <p class="empty">Nothing saved yet</p>
+  <div class="tasks-card pixel-box">
+    <p>💧 Drink some water</p>
+    <div>
+      <button class="btn-accent btn-icon" onclick="favouriteTask(this)">❤️</button>
+      <button class="btn-soft btn-small" onclick="completeTasksItem(this)">Complete</button>
     </div>
   </div>
 
-  <!-- 🌱 GOALS -->
-<div class="goals-section pixel-box">
+  <div class="tasks-card pixel-box">
+    <p>🛏️ Rest for a moment</p>
+    <div>
+      <button class="btn-accent btn-icon" onclick="favouriteTask(this)">❤️</button>
+      <button class="btn-soft btn-small" onclick="completeTasksItem(this)">Complete</button>
+    </div>
+  </div>
 
-  <p>🌱 Gentle Goals</p>
+  <div class="tasks-card pixel-box">
+    <p>🌬️ Take 5 deep breaths</p>
+    <div>
+      <button class="btn-accent btn-icon" onclick="favouriteTask(this)">❤️</button>
+      <button class="btn-soft btn-small" onclick="completeTasksItem(this)">Complete</button>
+    </div>
+  </div>
 
-  <!-- INPUT -->
-  <input type="text" id="goalInput" placeholder="e.g. Take things slower">
-  <input type="date" id="goalDate">
-
-  <button onclick="addGoal()">Add Goal</button>
-
-  <!-- LIST -->
-  <div id="goalsList">
-    <p class="empty">No goals yet</p>
+  <div class="tasks-card pixel-box">
+    <p>🎵 Listen to a song</p>
+    <div>
+      <button class="btn-accent btn-icon" onclick="favouriteTask(this)">❤️</button>
+      <button class="btn-soft btn-small" onclick="completeTasksItem(this)">Complete</button>
+    </div>
   </div>
 
 </div>
 
-<!-- 🌼 GRATITUDE -->
+<!-- MEDIUM -->
+<div class="tasks-group" id="mediumTasks">
+
+  <div class="tasks-card pixel-box">
+    <p>🚶 Go for a short walk</p>
+    <div>
+      <button class="btn-accent btn-icon" onclick="favouriteTask(this)">❤️</button>
+      <button class="btn-soft btn-small" onclick="completeTasksItem(this)">Complete</button>
+    </div>
+  </div>
+
+  <div class="tasks-card pixel-box">
+    <p>🧹 Tidy a small space</p>
+    <div>
+      <button class="btn-accent btn-icon" onclick="favouriteTask(this)">❤️</button>
+      <button class="btn-soft btn-small" onclick="completeTasksItem(this)">Complete</button>
+    </div>
+  </div>
+
+  <div class="tasks-card pixel-box">
+    <p>📖 Read for 10 minutes</p>
+    <div>
+      <button class="btn-accent btn-icon" onclick="favouriteTask(this)">❤️</button>
+      <button class="btn-soft btn-small" onclick="completeTasksItem(this)">Complete</button>
+    </div>
+  </div>
+
+  <div class="tasks-card pixel-box">
+    <p>📱 Message a friend</p>
+    <div>
+      <button class="btn-accent btn-icon" onclick="favouriteTask(this)">❤️</button>
+      <button class="btn-soft btn-small" onclick="completeTasksItem(this)">Complete</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- HIGH -->
+<div class="tasks-group" id="highTasks">
+
+  <div class="tasks-card pixel-box">
+    <p>🏃 Exercise</p>
+    <div>
+      <button class="btn-accent btn-icon" onclick="favouriteTask(this)">❤️</button>
+      <button class="btn-soft btn-small" onclick="completeTasksItem(this)">Complete</button>
+    </div>
+  </div>
+
+  <div class="tasks-card pixel-box">
+    <p>📝 Plan your day</p>
+    <div>
+      <button class="btn-accent btn-icon" onclick="favouriteTask(this)">❤️</button>
+      <button class="btn-soft btn-small" onclick="completeTasksItem(this)">Complete</button>
+    </div>
+  </div>
+
+  <div class="tasks-card pixel-box">
+    <p>🧠 Work on assignment</p>
+    <div>
+      <button class="btn-accent btn-icon" onclick="favouriteTask(this)">❤️</button>
+      <button class="btn-soft btn-small" onclick="completeTasksItem(this)">Complete</button>
+    </div>
+  </div>
+
+  <div class="tasks-card pixel-box">
+    <p>🍳 Cook a proper meal</p>
+    <div>
+      <button class="btn-accent btn-icon" onclick="favouriteTask(this)">❤️</button>
+      <button class="btn-soft btn-small" onclick="completeTasksItem(this)">Complete</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- FAVOURITES -->
+  <h3>💛 Your Favourites</h3>
+<div class="tasks-favourites pixel-box">
+
+  <div id="favouritesList">
+    <p class="empty">No favourites yet</p>
+  </div>
+</div>
+
+
+
+
+  </div>
+
+  <!-- ✨ AFFIRMATIONS -->
+
+  <div class="screen" id="affirmations">
+
+
+<h2 class="affirm-title">✨ Affirmations</h2>
+<p class="affirm-sub">A little reminder for you 💛</p>
+
+<div class="affirm-card pixel-box">
+  <p id="affirmation-display">You are allowed to go at your own pace ☀️</p>
+</div>
+
+<div class="affirm-actions">
+  <button class="btn-primary btn-small" onclick="newAffirmation()">🔁 New</button>
+  <button class="btn-accent btn-small" onclick="saveAffirmation()">💛 Save</button>
+</div>
+
+<div class="affirm-saved pixel-box">
+  <p>💛 Saved Affirmations</p>
+  <div id="savedList">
+    <p class="empty">Nothing saved yet</p>
+  </div>
+</div>
+
+<div class="goals-section pixel-box">
+  <p>🌱 Gentle Goals</p>
+  <input type="text" id="goalInput" placeholder="e.g. Take things slower">
+  <input type="date" id="goalDate">
+  <button class="btn-soft btn-small" onclick="addGoal()">Add</button>
+  <div id="goalsList">
+    <p class="empty mt-5">No goals yet</p>
+  </div>
+</div>
+
 <div class="gratitude-section pixel-box">
-
   <p>🌼 Gratitude</p>
-
   <input type="text" id="gratitudeInput" placeholder="Something you're grateful for...">
-
-  <button onclick="addGratitude()">Add</button>
-
+  <button class="btn-accent btn-small" onclick="addGratitude()">Add</button>
   <div id="gratitudeList">
     <p class="empty">Nothing here yet</p>
   </div>
-
 </div>
 
 
+  </div>
+
+  <!-- 💤 REST -->
+
+  <div class="screen rest-screen" id="rest">
+
+
+<h2 class="rest-title">💤 Rest Mode</h2>
+<p id="breathing-text" class="rest-text">Take a breath ☀️</p>
+
+<img src="assets/images/solibreathingin.png" id="soli-breathing" class="soli-breathing">
+
+<div class="rest-timer pixel-box">
+  <p>⏱️ Breathing Timer</p>
+  <p id="timer-display">01:00</p>
+  <button class="rest-btn btn-primary" onclick="startBreathingSession()">Start Breathing</button>
+</div>
+
+<div class="rest-suggestions">
+  <p>💡 Try this:</p>
+  <ul>
+    <li>🌿 Sit somewhere quiet</li>
+    <li>🎧 Listen to calm music</li>
+    <li>☕ Make a warm drink</li>
+  </ul>
+</div>
+
+<div class="rest-music pixel-box">
+  <p>🎧 Chill Sounds</p>
+
+  <select id="music-select">
+    <option value="assets/audio/rain.mp3">🌧️ Rain</option>
+    <option value="assets/audio/waves.mp3">🌊 Waves</option>
+    <option value="assets/audio/lo-fi.mp3">🎶 Lo-fi</option>
+  </select>
+
+  <div class="music-buttons">
+    <button class="btn-soft btn-small" onclick="playMusic()">Play</button>
+    <button class="btn-secondary btn-small" onclick="stopMusic()">Stop</button>
+  </div>
+</div>
+
+<div class="rest-tracker pixel-box">
+  <p>🌙 Sessions Completed</p>
+  <p id="rest-count">0</p>
 </div>
 
 
-<!-- 💤 REST -->
-<div class="screen rest-screen" id="rest">
-
-  <h2 class="rest-title">💤 Rest Mode</h2>
-  <p id="breathing-text" class="rest-text">Take a breath ☀️</p>
-
-  <!-- SOLI BREATHING -->
-  <img src="assets/images/solibreathingin.png" 
-       id="soli-breathing" 
-       class="soli-breathing">
-
-  <!-- ONE BUTTON (controls EVERYTHING now) -->
-  <button class="rest-btn" onclick="startBreathingSession()">Start Breathing</button>
-
-  <!-- TIMER DISPLAY ONLY -->
-  <div class="rest-timer pixel-box">
-    <p>⏱️ Breathing Timer</p>
-    <p id="timer-display">01:00</p>
   </div>
-
-  <!-- REST SUGGESTIONS -->
-  <div class="rest-suggestions">
-    <p>💡 Try this:</p>
-    <ul>
-      <li>🌿 Sit somewhere quiet</li>
-      <li>🎧 Listen to calm music</li>
-      <li>☕ Make a warm drink</li>
-    </ul>
-  </div>
-
-  <!-- MUSIC PLAYER -->
-  <div class="rest-music pixel-box">
-    <p>🎧 Chill Sounds</p>
-
-    <select id="music-select">
-      <option value="assets/audio/rain.mp3">🌧️ Rain</option>
-      <option value="assets/audio/waves.mp3">🌊 Waves</option>
-      <option value="assets/audio/lo-fi.mp3">🎶 Lo-fi</option>
-    </select>
-
-    <button onclick="playMusic()">Play</button>
-    <button onclick="stopMusic()">Stop</button>
-  </div>
-
-  <!-- SESSION TRACKER -->
-  <div class="rest-tracker pixel-box">
-    <p>🌙 Sessions Completed</p>
-    <p id="rest-count">0</p>
-  </div>
-
-</div>
-
-
 
   <!-- NAV -->
+
   <div class="nav" id="nav">
     <span onclick="showScreen('home', this)">🏠</span>
     <span onclick="showScreen('tasks', this)">🌿</span>
