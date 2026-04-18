@@ -598,13 +598,16 @@ button:active {
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
+
   display: flex;
   justify-content: space-around;
+
   background: rgba(255,255,255,0.7);
   padding: 10px;
   border-radius: 20px;
-}
 
+  z-index: 5; /* 👈 THIS FIXES IT */
+}
 .nav span {
   font-size: 20px;
   cursor: pointer;

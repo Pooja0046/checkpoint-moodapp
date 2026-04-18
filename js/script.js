@@ -341,11 +341,11 @@ document.addEventListener("DOMContentLoaded", () => {
       if (inhale) {
         soli.src = "assets/images/solibreathingin.png";
         soli.style.transform = "scale(0.9)";
-        text.innerText = "Breathe out...";
+        text.innerText = "Breathe in...";
       } else {
         soli.src = "assets/images/solibreathingout.png";
         soli.style.transform = "scale(1.2)";
-        text.innerText = "Breathe in...";
+        text.innerText = "Breathe out...";
       }
       inhale = !inhale;
     }, 4000);
