@@ -19,6 +19,8 @@ body {
 .screen {
   display: none;
   height: 100%;
+    position: relative;
+  z-index: 2;
 }
 .screen.active {
   display: flex;
@@ -136,20 +138,82 @@ button:active {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
 }
 
-.start-container img {
-  width: 300px;
+.soli-start {
+  width: 450px;
+  animation: float 3s infinite;
 }
 
-.start-title {
-  font-size: 22px;
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+
+/* CLOUD BASE */
+/* CLOUDS = background layer */
+.cloud {
+  position: absolute;
+  width: 200px;
+  opacity: 0.9;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* INDIVIDUAL POSITIONS */
+.cloud-1 {
+  top: 10%;
+  left: -80px;
+  animation: floatCloud 50s linear infinite;
+}
+
+.cloud-2 {
+  top: 25%;
+  left: -120px;
+  width: 90px;
+  animation: floatCloud 40s linear infinite;
+}
+
+.cloud-3 {
+  top: 60%;
+  left: -100px;
+  width: 110px;
+  animation: floatCloud 40s linear infinite;
+}
+
+.cloud-4 {
+  top: 80%;
+  right: 100px;
+  width: 90px;
+  animation: floatCloud 30s linear infinite;
+}
+
+.cloud-5 {
+  top: 85%;
+  right: 120px;
+  width: 150px;
+  animation: floatCloud 40s linear infinite;
+}
+
+/* ANIMATION */
+@keyframes floatCloud {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  50% {
+    transform: translateX(250px) translateY(-10px);
+  }
+  100% {
+    transform: translateX(500px) translateY(0);
+  }
 }
 
 .start-buttons {
   display: flex;
   gap: 12px;
+  margin-bottom: 20px;
 }
 
 /* ================= HOME ================= */
@@ -217,7 +281,7 @@ button:active {
 .progress-fill {
   height: 100%;
   width: 30%;
-  background: #F9C968;
+  background: #644A9B;
 }
 
 .home-affirmation {
@@ -514,7 +578,10 @@ button:active {
 .rest-music select {
   display: block;
   margin: 10px auto;
-  padding: 6px;
+  padding: 10px;
+  border-radius: 20px;
+    border: 5px solid #6B91C8;
+
 }
 
 .music-buttons {

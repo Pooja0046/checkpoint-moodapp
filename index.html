@@ -14,22 +14,23 @@
 
 <div class="app-container">
 
-  <!-- 🎮 START SCREEN -->
+  <!-- ☁️ CLOUDS (BACKGROUND LAYER) -->
+  <img src="assets/images/cloud.png" class="cloud cloud-1">
+  <img src="assets/images/cloud.png" class="cloud cloud-2">
+  <img src="assets/images/cloud.png" class="cloud cloud-3">
+  <img src="assets/images/cloud.png" class="cloud cloud-4">
+  <img src="assets/images/cloud.png" class="cloud cloud-5">
 
+  <!-- 🎮 START SCREEN -->
   <div class="screen active" id="start">
     <div class="start-container">
-      <img src="assets/images/mascot.png" class="soli-start">
-      <h1 class="start-title">Checkpoint</h1>
-      <p class="start-subtitle">A gentle journey ☀️</p>
+      <img src="assets/images/logo2.png" class="soli-start">
 
-      
-  <div class="start-buttons">
-    <button class="start-btn btn-primary" onclick="showScreen('home')">Start</button>
-    <button class="exit-btn btn-secondary" onclick="exitApp()">Exit</button>
-  </div>
-</div>
-
-
+      <div class="start-buttons">
+        <button class="start-btn btn-primary" onclick="showScreen('home')">Start</button>
+        <button class="exit-btn btn-primary" onclick="exitApp()">Exit</button>
+      </div>
+    </div>
   </div>
 
   <!-- 🌞 HOME -->
@@ -260,8 +261,8 @@
 </div>
 
 <div class="affirm-actions">
-  <button class="btn-primary btn-small" onclick="newAffirmation()">🔁 New</button>
-  <button class="btn-accent btn-small" onclick="saveAffirmation()">💛 Save</button>
+  <button class="btn-soft btn-small" onclick="newAffirmation()">New</button>
+  <button class="btn-soft btn-small" onclick="saveAffirmation()">Save</button>
 </div>
 
 <div class="affirm-saved pixel-box">
@@ -275,7 +276,7 @@
   <p>🌱 Gentle Goals</p>
   <input type="text" id="goalInput" placeholder="e.g. Take things slower">
   <input type="date" id="goalDate">
-  <button class="btn-soft btn-small" onclick="addGoal()">Add</button>
+  <button class="btn-accent btn-small" onclick="addGoal()">Add</button>
   <div id="goalsList">
     <p class="empty mt-5">No goals yet</p>
   </div>
@@ -306,7 +307,7 @@
 <div class="rest-timer pixel-box">
   <p>⏱️ Breathing Timer</p>
   <p id="timer-display">01:00</p>
-  <button class="rest-btn btn-primary" onclick="startBreathingSession()">Start Breathing</button>
+  <button class="rest-btn btn-soft" onclick="startBreathingSession()">Start Breathing</button>
 </div>
 
 <div class="rest-suggestions">
@@ -328,8 +329,8 @@
   </select>
 
   <div class="music-buttons">
-    <button class="btn-soft btn-small" onclick="playMusic()">Play</button>
-    <button class="btn-secondary btn-small" onclick="stopMusic()">Stop</button>
+    <button class="btn-accent btn-small" onclick="playMusic()">Play</button>
+    <button class="btn-accent btn-small" onclick="stopMusic()">Stop</button>
   </div>
 </div>
 
