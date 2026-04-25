@@ -339,11 +339,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     breathingInterval = setInterval(() => {
       if (inhale) {
-        soli.src = "assets/images/solibreathingin.png";
+        soli.src = "assets/images/breatheout.png";
         soli.style.transform = "scale(0.9)";
         text.innerText = "Breathe in...";
       } else {
-        soli.src = "assets/images/solibreathingout.png";
+        soli.src = "assets/images/breathein.png";
         soli.style.transform = "scale(1.2)";
         text.innerText = "Breathe out...";
       }
@@ -351,7 +351,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 4000);
 
     soli.style.transform = "scale(1)";
-soli.src = "assets/images/solibreathingin.png";
+soli.src = "assets/images/mascot.png";
 
     timerInterval = setInterval(() => {
       let mins = Math.floor(time / 60);

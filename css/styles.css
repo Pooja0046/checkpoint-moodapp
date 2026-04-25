@@ -141,8 +141,9 @@ button:active {
 }
 
 .soli-start {
-  width: 450px;
+  width: 380px;
   animation: float 3s infinite;
+  margin-bottom: 30px;
 }
 
 @keyframes float {
@@ -547,7 +548,7 @@ button:active {
 }
 
 .soli-breathing {
-  width: 100px;
+  width: 150px;
   margin: 15px auto;
   display: block;
 
