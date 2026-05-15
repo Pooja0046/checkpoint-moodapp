@@ -98,6 +98,55 @@
   <p class="day-feedback" id="day-feedback">Tap a day ✨</p>
 </div>
 
+<!-- DAY RATING POPUP -->
+<div class="day-popup" id="dayPopup">
+
+  <div class="day-popup-content pixel-box">
+
+    <button class="popup-close" onclick="closeDayPopup()">✖</button>
+
+    <p class="popup-title">🌸 How was your day?</p>
+
+    <div class="popup-buttons">
+
+      <button class="btn-soft" onclick="rateDay('1')">
+        😴 Low
+      </button>
+
+      <button class="btn-primary" onclick="rateDay('2')">
+        🙂 Okay
+      </button>
+
+      <button class="btn-accent" onclick="rateDay('3')">
+        🌟 Great
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- WEEK COMPLETE POPUP -->
+<div class="week-popup" id="weekPopup">
+
+  <div class="week-popup-content pixel-box">
+
+    <p class="week-title">🌟 Week Complete!</p>
+
+    <p class="week-text">
+      Soli is proud of you 💛
+    </p>
+
+    <p class="week-text">
+      You checked in every day!
+    </p>
+
+  </div>
+
+</div>
+
 
 
 
@@ -111,11 +160,36 @@
 <h2 class="tasks-title">🌿 Tasks</h2>
 <p class="tasks-feedback" id="tasksFeedback">Pick something small 💛</p>
 
+<!-- TASKS PROGRESS -->
 <div class="tasks-progress pixel-box">
-  <p>Progress 🌱</p>
-  <div class="tasks-progress-bar">
-    <div class="tasks-progress-fill" id="tasksProgress"></div>
+
+  <div class="tasks-progress-header">
+    <p>Daily Progress</p>
+    <p id="tasks-level-text">Level 1</p>
   </div>
+
+  <div class="tasks-progress-bar">
+    <div class="tasks-progress-fill" id="tasks-progress-fill"></div>
+  </div>
+
+  <p id="tasks-xp-text">XP: 0 / 100</p>
+
+</div>
+
+
+<!-- LEVEL UP POPUP -->
+<div class="level-popup" id="levelPopup">
+
+  <div class="level-popup-content pixel-box">
+
+    <p class="level-title">🌟 LEVEL UP!</p>
+
+    <p class="level-text">
+      Soli is proud of you 💛
+    </p>
+
+  </div>
+
 </div>
 
 <div class="tasks-tabs">
@@ -244,9 +318,6 @@
   </div>
 </div>
 
-
-
-
   </div>
 
   <!-- ✨ AFFIRMATIONS -->
@@ -311,15 +382,6 @@
   <button class="rest-btn btn-soft" onclick="startBreathingSession()">Start Breathing</button>
 </div>
 
-<div class="rest-suggestions">
-  <p>💡 Try this:</p>
-  <ul>
-    <li>🌿 Sit somewhere quiet</li>
-    <li>🎧 Listen to calm music</li>
-    <li>☕ Make a warm drink</li>
-  </ul>
-</div>
-
 <div class="rest-music pixel-box">
   <p>🎧 Chill Sounds</p>
 
@@ -344,12 +406,26 @@
   </div>
 
   <!-- NAV -->
+<div class="nav" id="nav">
 
-  <div class="nav" id="nav">
-    <span onclick="showScreen('home', this)">🏠</span>
-    <span onclick="showScreen('tasks', this)">🌿</span>
-    <span onclick="showScreen('affirmations', this)">✨</span>
-    <span onclick="showScreen('rest', this)">💤</span>
+  <div class="nav-item active-nav" onclick="showScreen('home', this)">
+    <span>🏠</span>
+    <p>Home</p>
+  </div>
+
+  <div class="nav-item" onclick="showScreen('tasks', this)">
+    <span>🌿</span>
+    <p>Tasks</p>
+  </div>
+
+  <div class="nav-item" onclick="showScreen('affirmations', this)">
+    <span>✨</span>
+    <p>Affirmations</p>
+  </div>
+
+  <div class="nav-item" onclick="showScreen('rest', this)">
+    <span>💤</span>
+    <p>Rest</p>
   </div>
 
 </div>

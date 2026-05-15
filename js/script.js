@@ -2,6 +2,8 @@
 let progress = 0;
 let xp = 0;
 let breathingInterval = null;
+let tasksXP = 0;
+let tasksLevel = 1;
 
 
 
@@ -23,9 +25,9 @@ function showScreen(screenId, element) {
   }
 
   if (element) {
-    document.querySelectorAll('.nav span').forEach(navItem =>
-      navItem.classList.remove('active-nav')
-    );
+document.querySelectorAll('.nav-item').forEach(navItem =>
+  navItem.classList.remove('active-nav')
+);
     element.classList.add('active-nav');
   }
 }
@@ -83,6 +85,67 @@ function completeTask(btn) {
   }
 }
 
+// ================= TASKS SCREEN PROGRESS =================
+
+// ================= TASKS SCREEN PROGRESS =================
+
+
+
+function completeTasksItem(btn) {
+
+  if (btn.disabled) return;
+
+  btn.innerText = "✔ Done";
+  btn.style.background = "#A3D9A5";
+  btn.disabled = true;
+
+  // ADD XP
+  tasksXP += 25;
+
+  // UPDATE BAR
+  document.getElementById("tasks-progress-fill").style.width =
+    tasksXP + "%";
+
+  // UPDATE TEXT
+  document.getElementById("tasks-xp-text").innerText =
+    `XP: ${tasksXP} / 100`;
+
+  // FEEDBACK
+  const feedback = document.getElementById("tasksFeedback");
+
+  feedback.innerText = "Great job 🌿";
+
+  // LEVEL UP
+  if (tasksXP >= 100) {
+
+    document.getElementById("levelPopup")
+      .classList.add("active");
+
+    tasksLevel++;
+
+    document.getElementById("tasks-level-text")
+      .innerText = `Level ${tasksLevel}`;
+
+    setTimeout(() => {
+
+      document.getElementById("levelPopup")
+        .classList.remove("active");
+
+      tasksXP = 0;
+
+      document.getElementById("tasks-progress-fill")
+        .style.width = "0%";
+
+      document.getElementById("tasks-xp-text")
+        .innerText = "XP: 0 / 100";
+
+    }, 3000);
+  }
+}
+
+
+
+
 // AFFIRMATIONS
 
 const affirmations = [
@@ -128,87 +191,138 @@ function switchTasksTab(button, tabId) {
   document.getElementById(tabId).classList.add('active');
 }
 
-// TASK COMPLETE (TASK SCREEN)
-let tasksCompleted = 0;
-
-function completeTasksItem(btn) {
-  btn.innerText = "✔ Done";
-  btn.style.background = "#A3D9A5";
-  btn.disabled = true;
-
-  tasksCompleted++;
-
-  // Update progress
-  const progress = document.getElementById("tasksProgress");
-  const totalTasks = document.querySelectorAll('.tasks-card').length;
-  const percent = (tasksCompleted / totalTasks) * 100;
-  progress.style.width = percent + "%";
-
-  // Soli feedback
-  const feedback = document.getElementById("tasksFeedback");
-
-  if (tasksCompleted === 1) {
-    feedback.innerText = "Nice start 🥺";
-  } else if (tasksCompleted === totalTasks) {
-    feedback.innerText = "You're smashing it ☀️";
-  } else {
-    feedback.innerText = "Keep going 🌿";
-  }
-}
-
-// BREATHING EXERCISE
-function startBreathing() {
-  const text = document.getElementById("breathing-text");
-
-  if (breathingInterval) {
-    clearInterval(breathingInterval);
-  }
-
-  let state = "inhale";
-
-  breathingInterval = setInterval(() => {
-    if (state === "inhale") {
-      text.innerText = "Breathe in... 🌿";
-      state = "hold";
-    } else if (state === "hold") {
-      text.innerText = "Hold... ☀️";
-      state = "exhale";
-    } else {
-      text.innerText = "Breathe out... 🌙";
-      state = "inhale";
-    }
-  }, 3000);
-}
 
 
 
+
+
+
+//CALLENDAR
+let currentSelectedDay = null;
 
 function selectDay(dayElement) {
-  // remove previous selection highlight
-  document.querySelectorAll('.day').forEach(d => d.classList.remove('selected'));
+
+  // remove old selected day
+  document.querySelectorAll('.day').forEach(d =>
+    d.classList.remove('selected')
+  );
+
   dayElement.classList.add('selected');
 
-  const rating = prompt("How helpful was today?\n1 = 😴 Low\n2 = 🙂 Okay\n3 = 🌟 Great");
+  // save clicked day
+  currentSelectedDay = dayElement;
+
+  // show popup
+  document.getElementById("dayPopup").classList.add("active");
+}
+
+function rateDay(rating) {
 
   const feedback = document.getElementById("day-feedback");
 
+  // clear previous colour states
+  currentSelectedDay.classList.remove(
+    "low",
+    "medium",
+    "high"
+  );
+
   if (rating === "1") {
-    dayElement.classList.add("low");
+    currentSelectedDay.classList.add("low");
     feedback.innerText = "You showed up — that’s enough 💛";
-  } 
+  }
+
   else if (rating === "2") {
-    dayElement.classList.add("medium");
+    currentSelectedDay.classList.add("medium");
     feedback.innerText = "Nice effort today 🌿";
-  } 
+  }
+
   else if (rating === "3") {
-    dayElement.classList.add("high");
+    currentSelectedDay.classList.add("high");
     feedback.innerText = "Amazing job today ✨";
-  } 
-  else {
-    feedback.innerText = "No rating selected 🙂";
+  }
+
+  // hide popup
+  document.getElementById("dayPopup")
+    .classList.remove("active");
+}
+
+
+
+function rateDay(rating) {
+
+  const feedback = document.getElementById("day-feedback");
+
+  // remove old states
+  currentSelectedDay.classList.remove(
+    "low",
+    "medium",
+    "high"
+  );
+
+  if (rating === "1") {
+    currentSelectedDay.classList.add("low");
+    feedback.innerText = "You showed up — that’s enough 💛";
+  }
+
+  else if (rating === "2") {
+    currentSelectedDay.classList.add("medium");
+    feedback.innerText = "Nice effort today 🌿";
+  }
+
+  else if (rating === "3") {
+    currentSelectedDay.classList.add("high");
+    feedback.innerText = "Amazing job today ✨";
+  }
+
+  // MARK DAY AS COMPLETE
+  currentSelectedDay.classList.add("completed");
+
+  // hide rating popup
+  document.getElementById("dayPopup")
+    .classList.remove("active");
+
+  // CHECK IF ENTIRE WEEK COMPLETE
+  const completedDays =
+    document.querySelectorAll('.day.completed');
+
+  if (completedDays.length === 7) {
+
+    // show reward popup
+    document.getElementById("weekPopup")
+      .classList.add("active");
+
+    // hide after 3 seconds
+    setTimeout(() => {
+
+      document.getElementById("weekPopup")
+        .classList.remove("active");
+
+      // RESET WEEK
+      document.querySelectorAll('.day').forEach(day => {
+
+        day.classList.remove(
+          "completed",
+          "low",
+          "medium",
+          "high",
+          "selected"
+        );
+
+      });
+
+      feedback.innerText = "A fresh new week ☀️";
+
+    }, 3000);
   }
 }
 
+function closeDayPopup() {
+
+  document.getElementById("dayPopup")
+    .classList.remove("active");
+
+}
 
 
 function favouriteTask(btn) {
@@ -249,6 +363,7 @@ function saveAffirmation() {
 }
 
 function addGoal() {
+
   const input = document.getElementById("goalInput");
   const date = document.getElementById("goalDate");
   const list = document.getElementById("goalsList");
@@ -260,17 +375,71 @@ function addGoal() {
     list.innerHTML = "";
   }
 
-  const goalItem = document.createElement("p");
+  // CREATE GOAL CONTAINER
+  const goalItem = document.createElement("div");
+  goalItem.classList.add("goal-item");
+
+  // GOAL TEXT
+  const goalText = document.createElement("p");
 
   if (date.value) {
-    goalItem.innerText = `🌿 ${input.value} (by ${date.value})`;
+    goalText.innerText =
+      `🌿 ${input.value} (by ${date.value})`;
   } else {
-    goalItem.innerText = `🌿 ${input.value}`;
+    goalText.innerText =
+      `🌿 ${input.value}`;
   }
 
+  // CHECK BUTTON
+  const checkBtn = document.createElement("button");
+
+  checkBtn.innerText = "✔";
+  checkBtn.classList.add("goal-check-btn");
+
+  // COMPLETE GOAL
+  checkBtn.onclick = () => {
+
+    goalText.style.textDecoration = "line-through";
+    goalText.style.opacity = "0.6";
+
+    checkBtn.innerText = "✓ Done";
+    checkBtn.disabled = true;
+
+    goalItem.classList.add("completed-goal");
+  };
+
+  // ADD TO ROW
+// BUTTON CONTAINER
+const actions = document.createElement("div");
+actions.classList.add("goal-actions");
+
+// DELETE BUTTON
+const deleteBtn = document.createElement("button");
+
+deleteBtn.innerText = "🗑";
+deleteBtn.classList.add("goal-delete-btn");
+
+deleteBtn.onclick = () => {
+  goalItem.remove();
+
+  // restore empty text if all removed
+  if (list.children.length === 0) {
+    list.innerHTML = `<p class="empty">Nothing here yet</p>`;
+  }
+};
+
+// ADD BUTTONS
+actions.appendChild(checkBtn);
+actions.appendChild(deleteBtn);
+
+// ADD TO GOAL
+goalItem.appendChild(goalText);
+goalItem.appendChild(actions);
+
+  // ADD TO LIST
   list.appendChild(goalItem);
 
-  // clear inputs
+  // CLEAR INPUTS
   input.value = "";
   date.value = "";
 }
@@ -324,57 +493,76 @@ document.addEventListener("DOMContentLoaded", () => {
   let audio = new Audio();
   let restCount = 0;
 
-  window.startBreathingSession = function() {
-    const soli = document.getElementById("soli-breathing");
-    const text = document.getElementById("breathing-text");
-    const timerDisplay = document.getElementById("timer-display");
+window.startBreathingSession = function() {
 
-    if (!soli || !text || !timerDisplay) return; // prevents crashes
+  const soli = document.getElementById("soli-breathing");
+  const text = document.getElementById("breathing-text");
+  const timerDisplay = document.getElementById("timer-display");
 
-    let inhale = true;
-    let time = 60;
+  if (!soli || !text || !timerDisplay) return;
 
-    clearInterval(breathingInterval);
-    clearInterval(timerInterval);
+  let inhale = true;
+  let time = 60;
 
-    breathingInterval = setInterval(() => {
-      if (inhale) {
-        soli.src = "assets/images/breatheout.png";
-        soli.style.transform = "scale(0.9)";
-        text.innerText = "Breathe in...";
-      } else {
-        soli.src = "assets/images/breathein.png";
-        soli.style.transform = "scale(1.2)";
-        text.innerText = "Breathe out...";
-      }
-      inhale = !inhale;
-    }, 4000);
+  clearInterval(breathingInterval);
+  clearInterval(timerInterval);
 
-    soli.style.transform = "scale(1)";
-soli.src = "assets/images/mascot.png";
+  // BREATH FUNCTION
+  function updateBreathing() {
 
-    timerInterval = setInterval(() => {
-      let mins = Math.floor(time / 60);
-      let secs = time % 60;
+    if (inhale) {
 
-      timerDisplay.innerText =
-        (mins < 10 ? "0" : "") + mins + ":" +
-        (secs < 10 ? "0" : "") + secs;
+      soli.src = "assets/images/breatheout.png";
+      soli.style.transform = "scale(0.9)";
+      text.innerText = "Breathe in... 🌿";
 
-      time--;
+    } else {
 
-      if (time < 0) {
-        clearInterval(breathingInterval);
-        clearInterval(timerInterval);
+      soli.src = "assets/images/breathein.png";
+      soli.style.transform = "scale(1.1)";
+      text.innerText = "Breathe out... 🌙";
 
-        text.innerText = "Soli is proud of you 💛";
+    }
 
-        restCount++;
-        document.getElementById("rest-count").innerText = restCount;
-      }
-    }, 1000);
-  };
+    inhale = !inhale;
+  }
 
+  // RUN IMMEDIATELY
+  updateBreathing();
+
+  // THEN LOOP
+  breathingInterval = setInterval(updateBreathing, 4000);
+
+  // TIMER
+  timerInterval = setInterval(() => {
+
+    let mins = Math.floor(time / 60);
+    let secs = time % 60;
+
+    timerDisplay.innerText =
+      (mins < 10 ? "0" : "") + mins + ":" +
+      (secs < 10 ? "0" : "") + secs;
+
+    time--;
+
+    if (time < 0) {
+
+      clearInterval(breathingInterval);
+      clearInterval(timerInterval);
+
+      // RESET SOLI
+      soli.src = "assets/images/mascot.png";
+      soli.style.transform = "scale(1)";
+
+      text.innerText = "Soli is proud of you 💛";
+
+      restCount++;
+      document.getElementById("rest-count").innerText = restCount;
+    }
+
+  }, 1000);
+
+};
   window.playMusic = function() {
     const selected = document.getElementById("music-select").value;
     audio.src = selected;
